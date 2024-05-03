@@ -1,0 +1,74 @@
+@use '@app/styles/breakpoints';
+
+.input {
+	position: relative;
+	font-size: 16px;
+	margin-top: 20px;
+	color: var(--gray);
+	outline: none;
+	box-shadow: 0px 4px 16px 0px rgba(51, 51, 51, 0.04);
+	transition: box-shadow 0.2s;
+
+	&:hover {
+		box-shadow: 0px 4px 16px 0px rgba(51, 51, 51, 0.08);
+	}
+
+	label {
+		visibility: hidden;
+		position: absolute;
+		left: 16px;
+		top: 0px;
+		font-size: 13px;
+		color: var(--gray);
+		transition: top 0.2s;
+	}
+
+	input {
+		width: 100%;
+		padding: 16px;
+		border: none;
+		transition: padding 0.2s;
+
+		&:focus::placeholder {
+			color: #fff;
+		}
+
+		&:disabled::placeholder,
+		&:disabled {
+			color: var(--gray);
+			background-color: var(--white);
+		}
+
+		&:focus,
+		&:not(:placeholder-shown) {
+			padding: 26px 16px 6px;
+		}
+
+		&:focus + label,
+		&:not(:placeholder-shown) + label {
+			visibility: visible;
+			top: 6px;
+			transition: top 0.2s;
+		}
+	}
+}
+
+@media (max-width: breakpoints.$md) {
+	.input {
+		font-size: 14px;
+
+		label {
+			font-size: 12px;
+		}
+	}
+}
+
+@media (max-width: breakpoints.$sm) {
+	.input {
+		font-size: 12px;
+
+		label {
+			font-size: 11px;
+		}
+	}
+}

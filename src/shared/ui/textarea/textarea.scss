@@ -1,0 +1,84 @@
+@use '@app/styles/breakpoints';
+
+.textarea {
+	position: relative;
+	font-size: 16px;
+	margin-top: 20px;
+	color: var(--gray);
+	outline: none;
+	box-shadow: 0px 4px 16px 0px rgba(51, 51, 51, 0.04);
+	transition: box-shadow 0.2s;
+
+	&:hover {
+		box-shadow: 0px 4px 16px 0px rgba(51, 51, 51, 0.08);
+	}
+
+	label {
+		visibility: hidden;
+		position: absolute;
+		left: 16px;
+		top: 0px;
+		font-size: 13px;
+		color: var(--gray);
+		transition: top 0.2s;
+	}
+
+	textarea {
+		margin-top: 4px;
+		padding: 12px 16px;
+
+		width: 100%;
+		height: 100px;
+		min-height: 100px;
+		max-height: 250px;
+		resize: vertical;
+
+		color: var(--black);
+		background-color: var(--white);
+
+		border-radius: 4px;
+		outline: none;
+		border: none;
+		overflow: hidden;
+
+		transition: padding 0.2s;
+
+		&:focus::placeholder {
+			color: #fff;
+		}
+
+		&:disabled::placeholder,
+		&:disabled {
+			color: var(--gray);
+			background-color: var(--white);
+		}
+
+		&:focus,
+		&:not(:placeholder-shown) {
+			padding: 26px 16px 6px;
+		}
+
+		&:focus + label,
+		&:not(:placeholder-shown) + label {
+			visibility: visible;
+			top: 8px;
+			transition: top 0.2s;
+		}
+	}
+}
+
+@media (max-width: breakpoints.$md) {
+	.textarea {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: breakpoints.$sm) {
+	.textarea {
+		font-size: 12px;
+
+		textarea {
+			max-height: 320px;
+		}
+	}
+}

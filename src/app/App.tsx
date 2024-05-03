@@ -1,15 +1,8 @@
 import './styles/index.scss';
+import { MainPage } from '@/pages/mainPage';
 
 const App = () => {
-	return (
-		<>
-			<h1>Без классов</h1>
-			<h1>Без классов</h1>
-
-			<h1 className='bg'>С классами</h1>
-			<h1 className='bg'>С классами</h1>
-		</>
-	);
+	return <MainPage />;
 };
 
 export default App;

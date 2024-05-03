@@ -8,8 +8,11 @@ export default defineConfig({
 		alias: {
 			'@': path.resolve(__dirname, './src'),
 			'@app': path.resolve(__dirname, './src/app'),
-			'@assets': path.resolve(__dirname, './src/assets'),
-			'@components': path.resolve(__dirname, './src/components'),
+			'@entites': path.resolve(__dirname, './src/entites'),
+			'@features': path.resolve(__dirname, './src/features'),
+			'@pages': path.resolve(__dirname, './src/pages'),
+			'@shared': path.resolve(__dirname, './src/shared'),
+			'@widgets': path.resolve(__dirname, './src/widgets'),
 		},
 	},
 	plugins: [react()],
