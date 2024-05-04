@@ -22,6 +22,7 @@ type FormButton = {
 };
 
 export interface State {
+	modal_opened: boolean;
 	file_uploaded: boolean;
 	form_name: string;
 	form_description?: string;
@@ -33,9 +34,11 @@ type Actions = {
 	setFormData: (formData: Partial<State>) => void;
 	resetData: () => void;
 	isLoading: (arg0: boolean) => void;
+	openModal: (arg0: boolean) => void;
 };
 
 export const useFileStore = create<State & Actions>((set) => ({
+	modal_opened: false,
 	file_uploaded: false,
 	form_name: '',
 	form_description: undefined,
@@ -50,4 +53,5 @@ export const useFileStore = create<State & Actions>((set) => ({
 			form_buttons: [],
 		}),
 	isLoading: (value) => set({ file_uploaded: value }),
+	openModal: (value) => set({ modal_opened: value }),
 }));

@@ -16,11 +16,10 @@ export type FormFields = {
 
 export const DynamicParser = () => {
 	const { form_name, form_description, form_fields, form_buttons } = useFileStore();
-	const { resetData, isLoading } = useFileStore();
+	const { openModal } = useFileStore();
 
 	const closeForm = () => {
-		resetData();
-		isLoading(false);
+		openModal(true);
 	};
 
 	if (!form_name) {
