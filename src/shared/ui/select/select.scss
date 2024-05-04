@@ -1,0 +1,88 @@
+@use '@app/styles/breakpoints';
+
+.select {
+	position: relative;
+	font-size: 16px;
+	margin-top: 20px;
+	color: var(--gray);
+	outline: none;
+	box-shadow: 0px 4px 16px 0px rgba(51, 51, 51, 0.04);
+	transition: box-shadow 0.2s;
+
+	&::before {
+		position: absolute;
+		background-image: url('../../../shared/assets/images/select-arrow-down.png');
+		height: 50px;
+		width: 50px;
+	}
+
+	&:hover {
+		box-shadow: 0px 4px 16px 0px rgba(51, 51, 51, 0.08);
+	}
+
+	label {
+		position: absolute;
+		left: 16px;
+		top: 16px;
+		font-size: 16px;
+		color: var(--gray);
+		transition: top 0.2s, font-size 0.2s;
+	}
+
+	input {
+		width: 100%;
+		padding: 16px;
+		border: none;
+		transition: padding 0.2s;
+
+		&:focus,
+		&:not(:placeholder-shown) {
+			padding: 26px 16px 6px;
+		}
+
+		&:focus + label,
+		&:not(:placeholder-shown) + label {
+			top: 6px;
+			font-size: 13px;
+			transition: top 0.2s, font-size 0.2s;
+		}
+	}
+}
+
+@media (max-width: breakpoints.$md) {
+	.select {
+		font-size: 14px;
+
+		label {
+			font-size: 14px;
+		}
+
+		input {
+			&:focus + label,
+			&:not(:placeholder-shown) + label {
+				top: 6px;
+				font-size: 12px;
+				transition: top 0.2s, font-size 0.2s;
+			}
+		}
+	}
+}
+
+@media (max-width: breakpoints.$sm) {
+	.select {
+		font-size: 12px;
+
+		label {
+			font-size: 12px;
+
+			input {
+				&:focus + label,
+				&:not(:placeholder-shown) + label {
+					top: 6px;
+					font-size: 11px;
+					transition: top 0.2s, font-size 0.2s;
+				}
+			}
+		}
+	}
+}

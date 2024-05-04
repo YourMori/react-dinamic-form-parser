@@ -1,9 +1,21 @@
 import { File } from '@/shared/ui/file';
-import React from 'react';
+import React, { useState } from 'react';
 import { useFileStore } from '../model/FileSlice';
 import './FileLoader.scss';
 
 export const FileLoader = () => {
+	const [dragActive, setDragActive] = useState(false);
+
+	const handleDrag = (event: React.DragEvent<HTMLDivElement>) => {
+		event.preventDefault();
+		setDragActive(true);
+	};
+
+	const handleLeave = (event: React.DragEvent<HTMLDivElement>) => {
+		event.preventDefault();
+		setDragActive(false);
+	};
+
 	const { setFormData, resetData, isLoading } = useFileStore();
 
 	const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +42,14 @@ export const FileLoader = () => {
 
 	return (
 		<div className='file__loader'>
-			<File onChange={handleOnChange} />
+			<div
+				className={`file__loader__wrapper ${dragActive ? 'drag' : ''}`}
+				onDragEnter={handleDrag}
+				onDragOver={handleDrag}
+				onDragLeave={handleLeave}
+			>
+				<File onChange={handleOnChange} />
+			</div>
 			<div className='file__loader__button'>
 				<button className='button__reset' onClick={fileReset}>
 					Reset

@@ -5,7 +5,16 @@ import { useFileStore } from '@/entites/FileLoader';
 import { FileForm } from '@/shared/ui/fileForm';
 import { Textarea } from '@/shared/ui/textarea';
 import { Checkbox } from '@/shared/ui/checkbox';
-import { FormEvent } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { read } from 'fs';
+import { Select } from '@/shared/ui/select';
+import { Color } from '@/shared/ui/color';
+
+export type FormFields = {
+	text: string;
+	password: string;
+	textarea: string;
+};
 
 export const DynamicParser = () => {
 	const { form_name, form_description, form_fields, form_buttons } = useFileStore();
@@ -18,23 +27,18 @@ export const DynamicParser = () => {
 		isLoading(false);
 	};
 
-	// const handleSubmit = (event: FormEvent) => {
-	// 	event.preventDefault();
+	const { register, handleSubmit } = useForm<FormFields>();
 
-	// 	const formData = new FormData(event.target as HTMLFormElement);
-	// 	const formDataObject: { [key: string]: string | Blob } = {};
-	// 	formData.forEach((value, key) => {
-	// 		formDataObject[key] = value;
-	// 		console.log(key, value);
-	// 	});
-	// };
+	const onSubmit: SubmitHandler<FormFields> = (data) => {
+		console.log(data);
+	};
 
 	if (!form_name) {
 		return <></>;
 	}
 
 	return (
-		<form action='/#' method='post'>
+		<form className='main__form' onSubmit={handleSubmit(onSubmit)}>
 			<div className='main__container'>
 				<h2 className='main__container-contact'>{form_name}</h2>
 				{form_description && <p className='main__container-info'>{form_description}</p>}
@@ -43,13 +47,13 @@ export const DynamicParser = () => {
 						case 'text':
 							return <Input key={index} {...item} />;
 						case 'color':
-							return <>color</>;
+							return <Color key={index} {...item} />;
 						case 'select':
-							return <>select</>;
+							return <Select key={index} {...item} />;
 						case 'textarea':
 							return <Textarea key={index} {...item} />;
 						case 'file':
-							return <FileForm key={index} />;
+							return <FileForm key={index} {...item} />;
 						case 'checkbox':
 							return <Checkbox key={index} {...item} />;
 						case 'password':

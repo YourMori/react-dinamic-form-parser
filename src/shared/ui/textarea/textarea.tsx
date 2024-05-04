@@ -1,5 +1,5 @@
+import React from 'react';
 import './textarea.scss';
-
 interface ITextarea {
 	type: string;
 	label?: string;
