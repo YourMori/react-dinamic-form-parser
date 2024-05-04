@@ -1,5 +1,6 @@
-import { File } from '@/shared/ui/file';
 import React, { useState } from 'react';
+
+import { File } from '@/shared/ui/file';
 import { useFileStore } from '../model/FileSlice';
 import './FileLoader.scss';
 

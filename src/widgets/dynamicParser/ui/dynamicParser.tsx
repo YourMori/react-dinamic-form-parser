@@ -5,8 +5,6 @@ import { useFileStore } from '@/entites/FileLoader';
 import { FileForm } from '@/shared/ui/fileForm';
 import { Textarea } from '@/shared/ui/textarea';
 import { Checkbox } from '@/shared/ui/checkbox';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { read } from 'fs';
 import { Select } from '@/shared/ui/select';
 import { Color } from '@/shared/ui/color';
 
@@ -20,17 +18,9 @@ export const DynamicParser = () => {
 	const { form_name, form_description, form_fields, form_buttons } = useFileStore();
 	const { resetData, isLoading } = useFileStore();
 
-	console.log(form_name, form_description, form_fields, form_buttons);
-
 	const closeForm = () => {
 		resetData();
 		isLoading(false);
-	};
-
-	const { register, handleSubmit } = useForm<FormFields>();
-
-	const onSubmit: SubmitHandler<FormFields> = (data) => {
-		console.log(data);
 	};
 
 	if (!form_name) {
@@ -38,7 +28,7 @@ export const DynamicParser = () => {
 	}
 
 	return (
-		<form className='main__form' onSubmit={handleSubmit(onSubmit)}>
+		<form className='main__form'>
 			<div className='main__container'>
 				<h2 className='main__container-contact'>{form_name}</h2>
 				{form_description && <p className='main__container-info'>{form_description}</p>}

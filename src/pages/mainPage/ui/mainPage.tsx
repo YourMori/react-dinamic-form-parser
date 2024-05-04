@@ -1,7 +1,6 @@
-import './mainPage.scss';
 import { FileLoader } from '@/entites/FileLoader';
-
 import { DynamicParser } from '@/widgets/dynamicParser';
+import './mainPage.scss';
 
 export const MainPage = () => {
 	return (

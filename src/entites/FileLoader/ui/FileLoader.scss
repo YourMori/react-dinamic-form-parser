@@ -1,6 +1,14 @@
 .file__loader {
 	width: 675px;
 
+	&__wrapper.drag {
+		z-index: 10;
+		background-color: var(--primary);
+		background-image: url('../../../shared/assets/images/file-drag.png');
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
 	&__button {
 		display: flex;
 		position: relative;
@@ -37,16 +45,4 @@
 			}
 		}
 	}
-}
-
-.file__loader__wrapper {
-	background-color: aliceblue;
-}
-
-.file__loader__wrapper .drag {
-	z-index: 10;
-	background-color: var(--primary);
-	background-image: url('../../../shared/assets/images/file-drag.png');
-	background-repeat: no-repeat;
-	background-position: center center;
 }
