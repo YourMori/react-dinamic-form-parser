@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+# Dynamic Form Parser
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> React + TypeScript + Vite
 
-Currently, two official plugins are available:
+## Описание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Динамический парсер форм представляет собой веб-приложение, целью которого является загрузка и отображение форм,
+описанных в формате JSON. Пользователь имеет возможность загрузить JSON файл с описанием формы, после чего происходит
+парсинг этого файла и динамическое создание соответствующей формы на странице.
 
-## Expanding the ESLint configuration
+## Цель задания
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Основной целью данного задания является отработка следующих навыков:
 
-- Configure the top-level `parserOptions` property like this:
+- Работа с DOM: Вам придется взаимодействовать с DOM для поиска и манипуляции элементами формы.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- Работа с событиями: Обработка различных событий, таких как отправка формы, клики по кнопкам, изменения значений полей и т. д.
+
+- Рендеринг компонентов: Если вы используете фреймворк React или Vue.js, вам придется создать компоненты для отображения формы
+  и их динамического обновления в соответствии с вводом пользователя.
+
+- Управление состоянием: Вам нужно будет хранить и обновлять состояние формы, чтобы отслеживать изменения и управлять их обработкой.
+
+- Валидация данных: Вы должны проверить введенные пользователем данные на соответствие определенным требованиям, например, наличие обязательных полей, правильный формат даты или адреса электронной почты.
+
+- Создание собственного Ui-kit: Вам необходимо будет спроектировать и разработать набор компонентов пользовательского интерфейса (UI), который может быть многократно использован в проектах для обеспечения единообразия и согласованности в дизайне и интеракции пользователей. Этот навык позволяет разработчикам эффективно работать над проектами, сокращая время разработки и обеспечивая качество и стиль.
+
+## Ресурсы
+
+- Макет проекта доступен по ссылке: [Figma](<https://www.figma.com/file/7S2O5KurM4GkBO1nj30Zg4/Forms-(2-week)?type=design&node-id=2286%3A7698&mode=design&t=ATrrUxSxxTtIpupx-1>)
+- Архив с Json файлами форм: [Архив](https://disk.yandex.ru/d/sYLCYONyPCGI0A)
+
+## Запуск проекта
+
 ```
+npm install - устанавливаем зависимости
+npm run dev - запуск сервера
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Используемая версия Node - v20.12.8
+```
